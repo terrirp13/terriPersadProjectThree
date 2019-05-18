@@ -97,52 +97,83 @@ const shuffledCards = shuffle(flipCardArray); //calling shuffle of flipCardArray
 
 //this prints the cards to the screen 
 shuffledCards.forEach(item => {
-  const $card = $("<div>").attr("class", "card");
+  const $card = $("<div>").attr("class", "card front");
   // const $front = $("<div>").attr("class", "front");
-  const $flip = $("<div>").attr("class", "back").attr("class", item.class);
+  const $flip = $("<div>")
+    .attr("class", "back")
+    .attr('data-set', item.class);
+  
   const $image = $("<img>")
     .attr("src", item.img)
     .attr("class", "frog");
 
   // $card.append($front)
-    $card.append($flip)
+  $card.append($flip)
   $flip.append($image);
   $game.append($card);
 
 });
 
-  let firstClick = ''
-  let secondClick = ''
-  let count = 0
+  let firstClick = '';
+  let secondClick = '';
+  let click = 0;
+  let tries = 4;
 
-$(".card").on("click", function() {
-  let clicked = this;
-  // console.log(this);
-    if (clicked.element === "section" || clicked.class === "selected") {
-  return;
-} 
-// clicked.classList.add('selected');
-
-  if (count < 2) {
-    count++;
-
-    if(count === 1);
-    firstClick = clicked.card.div.class;
-    console.log(firstClick);
-
-    clicked.classList.add('selectedCard') //added class so only two cards will be "selected"
-    //when I use .addClass it does not work. 
+  const reset = () => {
+    firstClick = '';
+    secondClick = '';
+    click = 0;
+  
+    $('.selectedCard').removeClass('selectedCard');
   }
 
-  //class cardMatch will make the selected cards disapper if there is a match. Function cardMatch will be called above in the click event. 
   const cardMatch = () => {
     let $selectedCard = $('.selectedCard')
-    
-    $selectedCard.forEach(card => {
-      card.classList.add('cardMatch')
-    })
+    console.log($selectedCard)
+    $selectedCard.addClass('cardMatch')
   }
+ 
+$(".card").on("click", function() {
+
+  let clicked = $(this);
+  // console.log(this);
+  if (clicked.element === "section" || clicked.hasClass('selectedCard')) {
+    return;
+  } 
+  // clicked.classList.add('selected');
+
+  if (click < 2) {
+    click++;
+
+    if(click === 1) {
+      firstClick = $(this).children("div").data("set");
+    } else {
+      secondClick = $(this).children("div").data("set");
+    }
+  
+    clicked.addClass('selectedCard') //added class so only two cards will be "selected"
+    if (firstClick !== '' && secondClick !== ''){
+      // console.log(firstClick, secondClick)
+      if(firstClick === secondClick) {
+        cardMatch();
+      } else {
+        tries--;
+      }
+
+      if (tries === 0) {
+        console.log('GAME OVER');
+      } else {
+        console.log('reset')
+        reset();
+      }
+    }
+  }
+ 
+
+  //class cardMatch will make the selected cards disapper if there is a match. Function cardMatch will be called above in the click event. 
+ 
   
 })
 
 })
+
