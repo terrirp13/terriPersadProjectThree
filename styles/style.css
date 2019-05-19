@@ -174,16 +174,49 @@ h3 {
   margin: 0 auto; }
 
 .game {
-  max-width: 1080px;
-  margin: 0 auto;
+  width: 640px;
+  height: 640px;
+  margin: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-pack: space-evenly;
-  -ms-flex-pack: space-evenly;
-  justify-content: space-evenly; }
+  flex-wrap: wrap; }
+
+.card {
+  width: calc(25% - 10px);
+  height: calc(33.333% - 10px);
+  margin: 5px;
+  position: relative;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-perspective: 800px;
+  perspective: 800px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d; }
+
+.front, .back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  border: 3px solid #392b58;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden; }
+
+.front {
+  background: #c5979d; }
+
+.back {
+  background: #afd2e9;
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg); }
 
 .frog {
   position: absolute;
@@ -194,33 +227,12 @@ h3 {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%); }
 
-.card {
-  width: 250px;
-  height: 250px;
-  margin: 30px;
-  position: relative;
-  -webkit-perspective: 800px;
-  perspective: 800px;
-  /*important for how "in yo face" the flip is. The lower the value, the closer you will view the transform" */
-  /*transform-style: preserve-3d;*/ }
-
-.back {
-  /* some styling for each card */
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  /*This means that when it is flipped over, we don't see the back */ }
-
-.front {
-  background: #c5979d; }
-
-.back {
-  background: #afd2e9; }
-
 .cardMatch {
-  border: 4px solid red;
   visibility: hidden; }
 
 .selectedCard {
-  border: 4px solid blue; }
+  border: 4px solid blue;
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg); }
 
 

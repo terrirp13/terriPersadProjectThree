@@ -31,72 +31,57 @@ h3{
 
 
 .game {
-  max-width: 1080px;
-  margin: 0 auto;
+   width: 640px;
+  height: 640px;
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+
 }
 
-// .card {
-//     margin: 30px;
-//     background-color: $accent;
-//     background-size: contain;
-//     background-repeat: no-repeat;
-//     background-position: center center;
-//     height: 200px;
-//     width: 200px;
-//     border-radius: 10px;
-//     border: 7px solid $border;
-//     position: relative;
-// }
- .frog {
-     position: absolute;
-     width: 100px;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%, -50%);
+.card {
+  width: calc(25% - 10px);
+  height: calc(33.333% - 10px);
+  margin: 5px;
+  position: relative;
+  transform: scale(1);
+  perspective: 800px;
+  transform-style: preserve-3d;
+}
+  
+
+.front, .back {
+  position: absolute;
+  height:100%;
+  width:100%;
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,.3);
+  border: 3px solid $border;
+  transition:all 0.5s;
+  backface-visibility:hidden;  
+}
+.front {
+  background:$tiles; 
+  
+}
+.back {
+  background:$accent; 
+  transform:rotateY(180deg); 
+}
+
+.frog {
+  position: absolute;
+  width: 100px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
  }
 
- .card {
-      width:250px;
-      height:250px;
-       margin: 30px;
-      position: relative;
-      perspective: 800px;  /*important for how "in yo face" the flip is. The lower the value, the closer you will view the transform" */
-      /*transform-style: preserve-3d;*/
-    }
-
-    .back {
-      /* some styling for each card */
-    //   position: absolute;
-    //   border-radius: 10px;
-    //  border: 7px solid $border;
-    //   height:100%;
-    //   width:100%;
-    //   transition:all 0.5s;
-      backface-visibility:hidden;  /*This means that when it is flipped over, we don't see the back */
-    }
-
-    .front {
-      background: $tiles; 
-    }
-    .back {
-      background:$accent; 
-    //   transform:rotateY(180deg);  /*By Default set the back to be rotate */
-    }
 .cardMatch {
-  border: 4px solid red;
   visibility: hidden;
 }
-    // .card:hover .back {
-    //   transform:rotateY(0);
-    // }
 
-    // .card:hover .front {
-    //   transform:rotateY(-180deg);
-    // }
-
-.selectedCard {
-  border: 4px solid blue;
+  .selectedCard {
+    border: 4px solid blue;
+    transform: rotateY(180deg);
 }
