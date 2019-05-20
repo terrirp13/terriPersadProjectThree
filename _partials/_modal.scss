@@ -1,0 +1,18 @@
+.modal, .overModal{
+    background-color: $accent;
+    border-radius: 20px;
+    border: 2px solid $border;
+    width: 50%;
+    text-align: center;
+    padding: 20px 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    display: none;
+}
+.primary{
+    position: relative;
+
+}

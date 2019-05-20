@@ -132,6 +132,12 @@ $(function () {
     console.log($selectedCard)
     $selectedCard.addClass('cardMatch')
   }
+  const closeModal = $('button').click(function () {
+    $(".modal").hide();
+  })
+  const gameOver = $(".overButton").click(function () {
+    location.reload();
+  })
 
   $(".card").on("click", function () {
 
@@ -164,6 +170,8 @@ $(function () {
         }
 
         if (tries === 0) {
+          $(".overModal").show(200);
+          gameOver();
           console.log('GAME OVER');
         } else {
           console.log('reset')
@@ -178,6 +186,10 @@ $(function () {
 
 
   })
+  $(".modal").show(200);
+
+
+  closeModal();
 
 })
 
