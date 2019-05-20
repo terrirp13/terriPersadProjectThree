@@ -117,8 +117,8 @@ $(function () {
   let firstClick = '';
   let secondClick = '';
   let click = 0;
-  let delay = 1200;
-  let tries = 4;
+  let delay = 1000;
+  let tries = 8;
 
   const reset = () => {
     firstClick = '';
