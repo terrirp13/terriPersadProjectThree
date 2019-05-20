@@ -119,6 +119,8 @@ $(function () {
   let click = 0;
   let delay = 1000;
   let tries = 8;
+   
+
 
   const reset = () => {
     firstClick = '';
@@ -129,8 +131,8 @@ $(function () {
 
   const cardMatch = () => {
     let $selectedCard = $('.selectedCard')
-    console.log($selectedCard)
     $selectedCard.addClass('cardMatch')
+  
   }
   const closeModal = $('button').click(function () {
     $(".modal").hide();
@@ -145,7 +147,7 @@ $(function () {
     if (clicked.element === "section" || clicked.hasClass('selectedCard')) {
       return;
     }
-    // clicked.classList.add('selected');
+   
 
     if (click < 2) {
       click++;
@@ -158,13 +160,11 @@ $(function () {
         clicked.addClass('selectedCard')
       }
 
-      clicked.addClass('selectedCard') //added class so only two cards will be "selected"
+      // clicked.addClass('selectedCard') //added class so only two cards will be "selected"
       if (firstClick !== '' && secondClick !== '') {
         console.log(firstClick, secondClick)
         if (firstClick === secondClick) {
-          // cardMatch();
           setTimeout(cardMatch, delay);
-          console.log("match");
         } else {
           tries--;
         }
@@ -172,18 +172,12 @@ $(function () {
         if (tries === 0) {
           $(".overModal").show(200);
           gameOver();
-          console.log('GAME OVER');
         } else {
-          console.log('reset')
           setTimeout(reset, delay);
-          // reset();
+          
         }
       }
     }
-
-
-    //class cardMatch will make the selected cards disapper if there is a match. Function cardMatch will be called above in the click event. 
-
 
   })
   $(".modal").show(200);

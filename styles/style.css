@@ -148,12 +148,13 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 html {
   font-family: 'Yeseva One', cursive;
   font-family: 'Roboto', sans-serif;
-  font-size: 125%; }
+  font-size: 125%;
+  padding: 0;
+  margin: 0; }
 
 body {
   background: #5e4b56;
-  padding: 0;
-  margin: 0; }
+  width: 100vw; }
 
 h1, h2, h3, h4, p, a, button {
   padding: 0;
@@ -161,7 +162,7 @@ h1, h2, h3, h4, p, a, button {
 
 h1 {
   font-family: 'Yeseva One', cursive;
-  font-size: 5rem;
+  font-size: 4rem;
   text-transform: capitalize;
   color: #fcd0a1;
   text-align: center; }
@@ -169,13 +170,15 @@ h1 {
 h2 {
   font-family: 'Roboto', sans-serif;
   font-size: 3rem;
-  color: #5e4b56; }
+  color: #5e4b56;
+  text-transform: uppercase; }
 
 h3 {
   font-family: 'Roboto', sans-serif;
   font-size: 2rem;
   color: #392b58;
-  padding: 10px; }
+  padding: 10px;
+  text-transform: capitalize; }
 
 p {
   font-family: 'Roboto', sans-serif;
@@ -189,16 +192,19 @@ button {
   padding: 10px;
   border-radius: 10px;
   margin-top: 10px;
-  border: 2px solid #392b58; }
+  border: 2px solid #392b58;
+  text-transform: capitalize; }
 
 .wrapper {
-  width: 1280px;
-  border: 1px solid red;
+  width: 800px;
   margin: 0 auto; }
 
+main {
+  margin: 0; }
+
 .game {
-  width: 640px;
-  height: 640px;
+  width: 540px;
+  height: 540px;
   margin: auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -208,7 +214,7 @@ button {
 
 .card {
   width: calc(25% - 10px);
-  height: calc(33.333% - 10px);
+  height: calc(30% - 10px);
   margin: 5px;
   position: relative;
   -webkit-transform: scale(1);
@@ -223,6 +229,8 @@ button {
   position: absolute;
   height: 100%;
   width: 100%;
+  margin: 0;
+  padding: 0;
   border-radius: 10px;
   -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
@@ -235,6 +243,11 @@ button {
 
 .front {
   background: #c5979d; }
+
+#memory {
+  width: 540px;
+  height: 540px;
+  margin: auto; }
 
 .back {
   background: #afd2e9;
@@ -254,7 +267,7 @@ button {
   visibility: hidden; }
 
 .selectedCard {
-  border: 4px solid blue;
+  border: 4px solid #afd2e9;
   -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg); }
 
@@ -262,7 +275,7 @@ button {
   background-color: #afd2e9;
   border-radius: 20px;
   border: 2px solid #392b58;
-  width: 50%;
+  width: 65%;
   text-align: center;
   padding: 20px 0;
   position: absolute;
@@ -276,5 +289,21 @@ button {
 
 .primary {
   position: relative; }
+
+.text {
+  position: relative; }
+
+.girlFrog, .Frog {
+  width: 130px; }
+
+.girlFrog {
+  position: absolute;
+  top: -50px;
+  left: -20px; }
+
+.Frog {
+  position: absolute;
+  bottom: -50px;
+  right: -20px; }
 
 
