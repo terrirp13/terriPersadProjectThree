@@ -1,4 +1,4 @@
-.modal, .overModal{
+.modal, .over_modal{
     background-color: $accent;
     border-radius: 20px;
     border: 2px solid $border;
@@ -32,4 +32,12 @@
     position: absolute;
     bottom: -50px;
     right: -20px;
+}
+
+@media (max-width: 320px){
+
+    .modal, .over_modal {
+       display: none;
+    }
+
 }

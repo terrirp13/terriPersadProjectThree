@@ -263,15 +263,15 @@ main {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%); }
 
-.cardMatch {
+.card_match {
   visibility: hidden; }
 
-.selectedCard {
+.selected_card {
   border: 4px solid #afd2e9;
   -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg); }
 
-.modal, .overModal {
+.modal, .over_modal {
   background-color: #afd2e9;
   border-radius: 20px;
   border: 2px solid #392b58;
@@ -305,5 +305,9 @@ main {
   position: absolute;
   bottom: -50px;
   right: -20px; }
+
+@media (max-width: 320px) {
+  .modal, .over_modal {
+    display: none; } }
 
 
