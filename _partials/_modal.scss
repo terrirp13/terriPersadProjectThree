@@ -1,4 +1,4 @@
-.modal, .over_modal{
+.modal, .over_modal, .win_modal{
     background-color: $accent;
     border-radius: 20px;
     border: 2px solid $border;
@@ -37,7 +37,7 @@
 
 
 @media (max-width: 800px){
-    .modal, .over_modal {
+    .modal, .over_modal, .win_modal {
        width: 50%;
     }
     .girlFrog, .Frog{
@@ -55,7 +55,7 @@
 
 
 @media (max-width: 500px){
-    .modal, .over_modal {
+    .modal, .over_modal, .win_modal {
        width: 20%;
     }
     .girlFrog, .Frog{

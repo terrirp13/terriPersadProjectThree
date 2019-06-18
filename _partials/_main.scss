@@ -6,8 +6,8 @@ html{
     margin: 0;
 }
 body {
-    background: $main;
-    width: 100vw;
+    background: $main; 
+
   
 }
 
@@ -38,6 +38,11 @@ h3{
     padding: 10px;
     text-transform: capitalize;
 }
+h4{
+  font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    color: $border
+}
 p {
   font-family: 'Roboto', sans-serif;
     font-size: 1rem;
@@ -53,29 +58,27 @@ button {
     border: 2px solid $border;
     text-transform: capitalize;
 
+
 }
 .wrapper {
-    width: 800px;
+    max-width: 800px;
+    width: 80vw;
     margin: 0 auto;
 }
-main{
-  margin: 0;
-}
 
 
-.game {
-   width: 540px;
-  height: 540px;
-  margin: auto;
+#memory {
+  height:70vh;
+  justify-content: center;
   display: flex;
   flex-wrap: wrap;
+
 
 }
 
 .card {
-  width: calc(25% - 10px);
-  height: calc(30% - 10px);
-  margin:  5px;
+  width: calc(100% /4 - 10px);
+  margin: 5px;
   position: relative;
   transform: scale(1);
   perspective: 800px;
@@ -87,8 +90,6 @@ main{
   position: absolute;
   height:100%;
   width:100%;
-  margin: 0;
-  padding: 0;
   border-radius: 10px;
   box-shadow: 1px 1px 3px rgba(0,0,0,.3);
   border: 3px solid $border;
@@ -99,11 +100,7 @@ main{
   background:$tiles; 
   
 }
-#memory {
-  width: 540px;
-  height: 540px;
-  margin: auto;
-}
+
 .back {
   background:$accent; 
   transform:rotateY(180deg); 
@@ -111,14 +108,15 @@ main{
 
 .frog {
   position: absolute;
-  width: 100px;
+   width: 60%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
  }
 
 .card_match {
-  visibility: hidden;
+  // visibility: hidden;
+  transform: rotateY(180deg);
 }
 
 .selected_card {
@@ -129,32 +127,47 @@ main{
 
 
 
+
 @media (max-width: 700px){
     h1{
         font-size: 3rem;
     }
-    .front, .back {
-      width: 60%;
-      height: 60%;
-      margin: 0;
+    .wrapper {
+      width: 95vw;
     }
-    .card{
-       width: calc(30% - 10px);
-        height: calc(35% - 10px);
-        margin:  5px;
+    .game {
+      height: 70vh;
     }
-    .game{
-      margin: 0;
-    }
-    .frog{
-      width: 50px;
-    }
+    // .front, .back {
+    //   width: 60%;
+    //   height: 60%;
+    //   margin: 0;
+    // }
+    // .card{
+    //    width: calc(30% - 10px);
+    //     height: calc(35% - 10px);
+    //     margin:  5px;
+    // }
+    // .game{
+    //   margin: 0;
+    // }
+    // .frog{
+    //   width: 50px;
+    // }
 
   }
 
 @media (max-width: 500px){
     h1{
         display: none;
+    }
+
+    .wrapper {
+      width: 100vw;
+    }
+
+    .game {
+      height: 50vh;
     }
 
   }

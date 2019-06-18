@@ -67,9 +67,6 @@ const flip_card_array = [
 ]
 
 const $memory_game = $('#memory');
-const $game = $("<section>").attr('class', 'game');
-$memory_game.append($game);
-
 
 $(function () {
 
@@ -97,6 +94,7 @@ $(function () {
 
   //this prints the cards to the screen 
   shuffled_cards.forEach(item => {
+    
     const $card = $("<div>").attr("class", "card");
     const $front = $("<div>").attr("class", "front");
     const $flip = $("<div>")
@@ -110,8 +108,8 @@ $(function () {
     $card.append($front)
     $card.append($flip)
     $flip.append($image);
-    $game.append($card);
-
+    $memory_game.append($card);
+   
   });
 
   let first_click = '';
@@ -119,8 +117,7 @@ $(function () {
   let click = 0;
   let delay = 1000;
   let tries = 8;
-   
-
+  let matched = []; 
 
   const reset = () => {
     first_click = '';
@@ -131,27 +128,38 @@ $(function () {
 
   const card_match = () => {
     let $selected_card = $('.selected_card')
-    $selected_card.addClass('card_match')
-  
+    $selected_card.addClass('card_match');
+    matched.push(card_match);
+    
   }
-  const close_modal = $('button').click(function () {
+  let close_modal = function () {
+   $('button').click(function () {
     $(".modal").hide();
-  })
-  const game_over = $(".over_button").click(function () {
+   })
+  }
+
+  let game_over = function () {
+  $(".over_button").click(function () {
     location.reload();
-  })
+    })
+  }
+  
 
   $(".card").on("click", function () {
-
+   
     let clicked = $(this);
-    if (clicked.element === "section" || clicked.hasClass('selected_card')) {
+    if (clicked.element === "section" || clicked.hasClass('selected_card') || clicked.hasClass('card_match')) {
       return;
     }
    
-
+    
     if (click < 2) {
       click++;
 
+      const $tries = (`<h4>Tries = ${tries}</h4>`);
+      $(".try"). empty();
+      $(".try").append($tries);
+      
       if (click === 1) {
         first_click = $(this).children(".back").data("set");
         clicked.addClass('selected_card')
@@ -159,30 +167,34 @@ $(function () {
         second_click = $(this).children(".back").data("set");
         clicked.addClass('selected_card')
       }
+     
 
       // clicked.addClass('selected_card') //added class so only two cards will be "selected"
       if (first_click !== '' && second_click !== '') {
-        console.log(first_click, second_click)
+        
         if (first_click === second_click) {
           setTimeout(card_match, delay);
         } else {
           tries--;
+          
         }
-
-        if (tries === 0) {
+        if (matched.length === 5 ) {
+          $(".modal").show();
+        } else if (tries === 0) {
           $(".over_modal").show(200);
-          game_over();
+          game_over(); 
         } else {
           setTimeout(reset, delay);
           
         }
+        
       }
+     
     }
 
   })
+ 
   $(".modal").show(200);
-
-
   close_modal();
 
 })
