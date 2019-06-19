@@ -156,7 +156,7 @@ $(function () {
     if (click < 2) {
       click++;
 
-      const $tries = (`<h4>Tries = ${tries}</h4>`);
+      const $tries = (`<h4>You have ${tries} lives</h4>`);
       $(".try"). empty();
       $(".try").append($tries);
       
@@ -179,7 +179,8 @@ $(function () {
           
         }
         if (matched.length === 5 ) {
-          $(".modal").show();
+          $(".win_modal").show();
+           game_over(); 
         } else if (tries === 0) {
           $(".over_modal").show(200);
           game_over(); 
